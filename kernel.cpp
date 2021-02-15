@@ -1,5 +1,11 @@
+// Load the files
+// We can't use frameworks because we are on our own 
+// We can't build in a linux enviroments
+#include "types.h" 
+
+
 void printf(char* str) {
-    static unsigned short* VideoMemory = (unsigned short*)0xb8000;
+    static uint16_t* VideoMemory = (uint16_t*)0xb8000;
 
     for(int i = 0; str[i] != '\0'; ++i) {
         VideoMemory[i] = (VideoMemory[i] & 0xFF00) | str[i];
@@ -19,8 +25,8 @@ extern "C" void callConstructors() {
 
 
 
-extern "C" void kernelDidLoad(const void* multiboot_structure, unsigned int /*multiboot_magic*/) {
-    printf("Hello World! --- Ashwin Paudel\n");
+extern "C" void kernelDidLoad(const void* multiboot_structure, uint32_t /*multiboot_magic*/) {
+    printf("Hello World! --- Ashwin Paudel \n \n");
 
     // We don't want to stop the kernel so we keep a loop
     while(1);
