@@ -25,7 +25,12 @@ extern "C" void callConstructors() {
     }
 }
 
-
+/* 
+|
+|
+|
+|___________________
+*/
 
 extern "C" void kernelDidLoad(const void* multiboot_structure, uint32_t /*multiboot_magic*/) {
     printf("Hello World! --- Ashwin Paudel \n \n");
