@@ -4,6 +4,8 @@
 #include "types.h" 
 
 
+// This is a very basic printf
+// This will show text in the terminal in the OS
 void printf(char* str) {
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
 
