@@ -39,3 +39,6 @@ run: kernel.iso
 	(killall VirtualBox && sleep 1) || true
 	VirtualBox --startvm 'BudOS' &
 
+.PHONY: clean
+clean:
+	rm -f $(objects) kernel.bin kernel.iso
