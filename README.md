@@ -4,4 +4,10 @@
 An Operating System from WYOOS, Work in progress
 
 ### Running
-open the folder in the terminal and run make kernel.iso
+Download this
+`sudo apt-get install g++ binutils libc6-dev-i386`
+`sudo apt-get install VirtualBox grub-legacy xorriso`
+
+open the folder in the terminal and run `make kernel.iso` to run in virtual box do `make run` 
+to delete run `make clean`
+to see more open the makefile
