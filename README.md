@@ -3,7 +3,7 @@
 
 An Operating System from WYOOS, Work in progress
 
-### Running
+# Running
 Download this
 `sudo apt-get install g++ binutils libc6-dev-i386`
 `sudo apt-get install VirtualBox grub-legacy xorriso`
@@ -11,3 +11,7 @@ Download this
 open the folder in the terminal and run `make kernel.iso` to run in virtual box do `make run` 
 to delete run `make clean`
 to see more open the makefile
+
+# TODO
+1) Make Modern GUI
+
