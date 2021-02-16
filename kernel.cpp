@@ -2,6 +2,7 @@
 // We can't use frameworks because we are on our own 
 // We can't build in a linux enviroments
 #include "types.h" 
+#include "gdt.h"
 
 
 // This is a very basic printf
@@ -35,6 +36,7 @@ extern "C" void callConstructors() {
 extern "C" void kernelDidLoad(const void* multiboot_structure, uint32_t /*multiboot_magic*/) {
     printf("Hello World! --- Ashwin Paudel \n \n");
 
+GlobalDescriptorTable gdt;
     // We don't want to stop the kernel so we keep a loop
     while(1);
 }
