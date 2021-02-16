@@ -2,9 +2,11 @@
 #include "gdt.h"
 
 
-GlobalDescriptorTable::GlobalDescriptorTable() : nullSegmentSelector(0, 0, 0), unusedSegmentSelector(0, 0, 0),
-                                                 codeSegmentSelector(0, 64 * 1024 * 1024, 0x9A),
-                                                 dataSegmentSelector(0, 64 * 1024 * 1024, 0x92) {
+GlobalDescriptorTable::GlobalDescriptorTable()
+        : nullSegmentSelector(0, 0, 0),
+          unusedSegmentSelector(0, 0, 0),
+          codeSegmentSelector(0, 64 * 1024 * 1024, 0x9A),
+          dataSegmentSelector(0, 64 * 1024 * 1024, 0x92) {
     uint32_t i[2];
     i[1] = (uint32_t) this;
     i[0] = sizeof(GlobalDescriptorTable) << 16;
@@ -40,11 +42,10 @@ GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint3
         // compensate this by decreasing a higher bit (and might have up to
         // 4095 wasted bytes behind the used memory)
 
-        if ((limit & 0xFFF) != 0xFFF) {
+        if ((limit & 0xFFF) != 0xFFF)
             limit = (limit >> 12) - 1;
-        } else {
+        else
             limit = limit >> 12;
-        }
 
         target[6] = 0xC0;
     }
@@ -82,9 +83,8 @@ uint32_t GlobalDescriptorTable::SegmentDescriptor::Limit() {
     result = (result << 8) + target[1];
     result = (result << 8) + target[0];
 
-    if ((target[6] & 0xC0) == 0xC0) {
+    if ((target[6] & 0xC0) == 0xC0)
         result = (result << 12) | 0xFFF;
-    }
 
     return result;
 }

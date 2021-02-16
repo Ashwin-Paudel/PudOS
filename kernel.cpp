@@ -1,8 +1,7 @@
-// Load the files
-// We can't use frameworks because we are on our own 
-// We can't build in a linux enviroments
+
 #include "types.h"
 #include "gdt.h"
+#include "interrupts.h"
 
 void printf(char *str) {
     static uint16_t *VideoMemory = (uint16_t *) 0xb8000;
@@ -49,10 +48,11 @@ extern "C" void callConstructors() {
 
 
 extern "C" void kernelDidLoad(const void *multiboot_structure, uint32_t /*multiboot_magic*/) {
-    printf("Hello World! --- Ashwin Paudel");
-    printf("Hello World! --- Ashwin Paudel");
+    printf("Hello World! --- http://www.AlgorithMan.de");
 
     GlobalDescriptorTable gdt;
+    InterruptManager interrupts(0x20, &gdt);
+    interrupts.Activate();
 
     while (1);
 }
